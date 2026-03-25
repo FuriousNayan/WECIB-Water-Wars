@@ -535,14 +535,19 @@ ul { list-style: none; }
 .purge-static {
   position: absolute; inset: 0; z-index: 2;
   opacity: .04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,.08) 0px,
+    transparent 1px,
+    transparent 3px
+  );
   pointer-events: none;
-  animation: staticFlash .1s steps(3) infinite;
+  animation: staticFlash .15s steps(2) infinite;
 }
 @keyframes staticFlash {
-  0%   { opacity: .03; }
-  50%  { opacity: .06; }
-  100% { opacity: .03; }
+  0%   { opacity: .03; transform: translateX(0); }
+  50%  { opacity: .06; transform: translateX(-1px); }
+  100% { opacity: .03; transform: translateX(0); }
 }
 
 .purge-content {
