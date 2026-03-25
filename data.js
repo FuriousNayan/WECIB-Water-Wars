@@ -40,7 +40,7 @@ const TEAMS = [
     benched: "",
     players: [
       { name: "Khani", eliminated: false, kills: 0 },
-      { name: "Jessica", eliminated: false, kills: 0 },
+      { name: "Jessica", eliminated: true, kills: 0 },
       { name: "Alex", eliminated: false, kills: 0 },
     ],
   },
@@ -61,8 +61,8 @@ const TEAMS = [
     benched: "",
     players: [
       { name: "Afton", eliminated: false, kills: 0 },
-      { name: "Quint", eliminated: false, kills: 0 },
-      { name: "Andrew", eliminated: false, kills: 0 },
+      { name: "Quint", eliminated: true, kills: 0 },
+      { name: "Andrew", eliminated: true, kills: 0 },
       { name: "Rudra", eliminated: false, kills: 0 },
     ],
   },
@@ -94,7 +94,7 @@ const TEAMS = [
     benched: "",
     players: [
       { name: "Arham", eliminated: false, kills: 0 },
-      { name: "Marcus", eliminated: false, kills: 0 },
+      { name: "Marcus", eliminated: true, kills: 0 },
       { name: "Melo", eliminated: false, kills: 0 },
       { name: "Victor", eliminated: false, kills: 0 },
     ],
