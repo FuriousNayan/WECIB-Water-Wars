@@ -17,6 +17,15 @@ const ANNOUNCEMENTS = [
   "Welcome to WECIB Water Wars! Round 1 matchups are live!",
 ];
 
+const PURGE_DAY = {
+  active: true,
+  rules: [
+    "Safety items are BANNED — no protection allowed.",
+    "Location sharing may be turned OFF from 3:00 PM – 6:00 PM.",
+    "All other standard rules still apply.",
+  ],
+};
+
 // ----------------------------------------------------------------
 //  TEAMS
 //  - To mark a player eliminated in the current match, set eliminated: true

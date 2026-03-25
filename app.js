@@ -448,8 +448,35 @@
     resizeTimer = setTimeout(redrawConnectors, 150);
   });
 
+  // ---------- Purge Day Overlay ----------
+  function initPurgeOverlay() {
+    if (typeof PURGE_DAY === "undefined" || !PURGE_DAY.active) return;
+
+    var overlay = document.getElementById("purgeOverlay");
+    var rulesEl = document.getElementById("purgeRules");
+    var dismiss = document.getElementById("purgeDismiss");
+    if (!overlay || !rulesEl || !dismiss) return;
+
+    PURGE_DAY.rules.forEach(function (rule) {
+      var li = el("li", null, rule);
+      rulesEl.appendChild(li);
+    });
+
+    document.body.style.overflow = "hidden";
+    overlay.classList.add("active");
+
+    dismiss.addEventListener("click", function () {
+      overlay.classList.add("hiding");
+      document.body.style.overflow = "";
+      setTimeout(function () {
+        overlay.remove();
+      }, 500);
+    });
+  }
+
   // ---------- Init ----------
   function init() {
+    initPurgeOverlay();
     initNavbar();
     renderHero();
     renderScoreboard();
