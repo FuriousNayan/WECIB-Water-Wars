@@ -80,7 +80,7 @@ const TEAMS = [
   {
     id: "powersplash-girls",
     name: "The PowerSplash Girls",
-    benched: "",
+    benched: "Sara",
     players: [
       { name: "Brandon", eliminated: false, kills: 0 },
       { name: "Claire", eliminated: false, kills: 0 },
