@@ -462,10 +462,28 @@
       rulesEl.appendChild(li);
     });
 
+    var siren = new Audio("sounds/purgeSiren.mp3");
+    siren.loop = true;
+
+    var purgeContent = document.getElementById("purgeContent");
+    purgeContent.style.display = "none";
+
+    var gate = el("div", "purge-gate");
+    gate.innerHTML = '<span class="purge-gate-text">CLICK TO ENTER</span>';
+    overlay.appendChild(gate);
+
     document.body.style.overflow = "hidden";
     overlay.classList.add("active");
 
+    gate.addEventListener("click", function () {
+      siren.play();
+      gate.remove();
+      purgeContent.style.display = "";
+    });
+
     dismiss.addEventListener("click", function () {
+      siren.pause();
+      siren.currentTime = 0;
       overlay.classList.add("hiding");
       document.body.style.overflow = "";
       setTimeout(function () {

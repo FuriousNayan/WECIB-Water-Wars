@@ -693,6 +693,33 @@ ul { list-style: none; }
   box-shadow: 0 0 40px rgba(0, 200, 255, .15);
 }
 
+.purge-gate {
+  position: relative; z-index: 3;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 60px;
+  animation: gateBreath 2s ease-in-out infinite;
+}
+.purge-gate-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem; font-weight: 700;
+  color: rgba(0, 200, 255, .6);
+  letter-spacing: 6px; text-transform: uppercase;
+  border: 1px solid rgba(0, 200, 255, .2);
+  padding: 18px 48px;
+  transition: all .3s ease;
+}
+.purge-gate:hover .purge-gate-text {
+  color: #fff;
+  border-color: rgba(0, 200, 255, .5);
+  background: rgba(0, 200, 255, .08);
+  box-shadow: 0 0 40px rgba(0, 200, 255, .15);
+}
+@keyframes gateBreath {
+  0%, 100% { opacity: .7; }
+  50%      { opacity: 1; }
+}
+
 @media (max-width: 768px) {
   .purge-content { padding: 0 24px 36px; }
   .purge-broadcast-bar { margin: 0 -24px 24px; }
