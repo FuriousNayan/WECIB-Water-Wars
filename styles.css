@@ -221,6 +221,7 @@ ul { list-style: none; }
 .sc-val { font-weight: 700; }
 .sc-val.kills { color: var(--blue); }
 .sc-val.remaining { color: var(--win); }
+.sc-val.benched { color: var(--lose); font-weight: 600; font-size: .78rem; }
 
 .sc-elim-title {
   font-size: .7rem; font-weight: 700; text-transform: uppercase;
@@ -442,6 +443,46 @@ ul { list-style: none; }
 }
 
 .lb-empty { color: var(--gray-500); font-style: italic; font-weight: 400; }
+
+/* --- Reels --- */
+.reels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.reel-card {
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: var(--radius); overflow: hidden;
+  transition: var(--transition);
+}
+.reel-card:hover {
+  transform: translateY(-4px); box-shadow: var(--shadow-lg);
+  border-color: var(--sky);
+}
+
+.reel-video {
+  width: 100%; aspect-ratio: 9 / 16; max-height: 480px;
+  background: var(--gray-900); display: block; object-fit: cover;
+}
+.reel-video-landscape { aspect-ratio: 16 / 9; max-height: none; }
+
+.reel-info { padding: 16px 20px; }
+.reel-title {
+  font-size: .95rem; font-weight: 700; color: var(--navy);
+  margin-bottom: 4px;
+}
+.reel-week {
+  font-size: .75rem; font-weight: 600; color: var(--gray-500);
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+.reels-empty {
+  text-align: center; padding: 60px 20px; color: var(--gray-500);
+  grid-column: 1 / -1;
+}
+.reels-empty-icon { font-size: 3rem; display: block; margin-bottom: 12px; }
+.reels-empty p { font-size: 1rem; }
 
 /* --- Rules --- */
 .rules-card {

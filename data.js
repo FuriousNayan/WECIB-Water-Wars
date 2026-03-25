@@ -26,6 +26,7 @@ const TEAMS = [
   {
     id: "la-leakers",
     name: "Los Angeles Leakers",
+    benched: "Abid", // e.g. "Lucas, Abid"
     players: [
       { name: "Lucas", eliminated: false, kills: 0 },
       { name: "Karim", eliminated: false, kills: 0 },
@@ -36,35 +37,39 @@ const TEAMS = [
   {
     id: "the-crackin",
     name: "The Kraken",
+    benched: "",
     players: [
       { name: "Khani", eliminated: false, kills: 0 },
-      { name: "Jessica", eliminated: true, kills: 0 },
+      { name: "Jessica", eliminated: false, kills: 0 },
       { name: "Alex", eliminated: false, kills: 0 },
     ],
   },
   {
     id: "splash-team-6",
     name: "Splash Team 6",
+    benched: "Adam",
     players: [
       { name: "Adam", eliminated: false, kills: 0 },
       { name: "Keshav", eliminated: false, kills: 0 },
-      { name: "Evan", eliminated: false, kills: 2 },
-      { name: "Caleb", eliminated: false, kills: 0 },
+      { name: "Evan", eliminated: false, kills: 1 },
+      { name: "Caleb", eliminated: false, kills: 1 },
     ],
   },
   {
     id: "aquabats",
     name: "Aquabats",
+    benched: "",
     players: [
       { name: "Afton", eliminated: false, kills: 0 },
-      { name: "Quint", eliminated: true, kills: 0 },
-      { name: "Andrew", eliminated: true, kills: 0 },
+      { name: "Quint", eliminated: false, kills: 0 },
+      { name: "Andrew", eliminated: false, kills: 0 },
       { name: "Rudra", eliminated: false, kills: 0 },
     ],
   },
   {
     id: "splash-bros",
     name: "SplashBros",
+    benched: "",
     players: [
       { name: "Beckett", eliminated: false, kills: 0 },
       { name: "Bennet", eliminated: false, kills: 0 },
@@ -75,6 +80,7 @@ const TEAMS = [
   {
     id: "powersplash-girls",
     name: "The PowerSplash Girls",
+    benched: "",
     players: [
       { name: "Brandon", eliminated: false, kills: 0 },
       { name: "Claire", eliminated: false, kills: 0 },
@@ -85,9 +91,10 @@ const TEAMS = [
   {
     id: "certified-soaker",
     name: "Certified Soaker Boys",
+    benched: "",
     players: [
       { name: "Arham", eliminated: false, kills: 0 },
-      { name: "Marcus", eliminated: true, kills: 0 },
+      { name: "Marcus", eliminated: false, kills: 0 },
       { name: "Melo", eliminated: false, kills: 0 },
       { name: "Victor", eliminated: false, kills: 0 },
     ],
@@ -95,6 +102,7 @@ const TEAMS = [
   {
     id: "baja-blasters",
     name: "Baja Blasters",
+    benched: "",
     players: [
       { name: "Gauhar", eliminated: false, kills: 1 },
       { name: "Olivia", eliminated: false, kills: 0 },
@@ -105,6 +113,7 @@ const TEAMS = [
   {
     id: "squirtle-squad",
     name: "SquirtleSquad",
+    benched: "Dennis",
     players: [
       { name: "Parth", eliminated: false, kills: 0 },
       { name: "Dennis", eliminated: false, kills: 0 },
@@ -115,6 +124,7 @@ const TEAMS = [
   {
     id: "squirtshank",
     name: "Squirtshank Redemption",
+    benched: "",
     players: [
       { name: "Nayan", eliminated: false, kills: 0 },
       { name: "Gabe", eliminated: false, kills: 0 },
@@ -124,6 +134,7 @@ const TEAMS = [
   {
     id: "drip-or-drown",
     name: "Drip or Drown",
+    benched: "",
     players: [
       { name: "Sham", eliminated: false, kills: 0 },
       { name: "Maryam", eliminated: false, kills: 0 },
@@ -133,6 +144,7 @@ const TEAMS = [
   {
     id: "bikini-bottom",
     name: "Bikini Bottom Soakers",
+    benched: "",
     players: [
       { name: "Mays", eliminated: false, kills: 0 },
       { name: "Tanu", eliminated: false, kills: 0 },
@@ -217,3 +229,23 @@ const BRACKET_STRUCTURE = {
     ],
   },
 };
+
+// ----------------------------------------------------------------
+//  REELS — Elimination Cams
+//  Add videos here. They show up in the Reels section.
+//
+//  src:   path to the video file (put files in the videos/ folder)
+//         OR a direct URL (e.g. from Google Drive, Dropbox, etc.)
+//  title: short caption shown under the video
+//  week:  which week it happened
+//
+//  Example:
+//  { src: "videos/evan-gets-khani.mp4", title: "Evan eliminates Khani", week: 1 },
+//  { src: "https://some-url.com/clip.mp4", title: "Big play!", week: 1 },
+// ----------------------------------------------------------------
+const REELS = [
+   { src: "videos/evan elim jessica.MOV", title: "evan top 1 at wecib", week: 1 },
+   { src: "videos/gauhar elim marcus.MOV", title: "both hands on the steering wheel pls", week: 1 },
+   { src: "videos/evan elim andrew.MOV", title: "why unc in that pose tho", week: 1 },
+
+];

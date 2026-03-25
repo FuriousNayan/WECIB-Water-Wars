@@ -132,10 +132,12 @@
             '<div class="sc-col"><div class="sc-col-title">' + t1.name + '</div>' +
               '<div class="sc-row"><span>Kills</span><span class="sc-val kills">' + t1Kills + '</span></div>' +
               '<div class="sc-row"><span>Remaining</span><span class="sc-val remaining">' + t1Remaining + '/' + t1.players.length + '</span></div>' +
+              '<div class="sc-row"><span>Benched</span><span class="sc-val benched">' + (t1.benched || '—') + '</span></div>' +
             '</div>' +
             '<div class="sc-col"><div class="sc-col-title">' + t2.name + '</div>' +
               '<div class="sc-row"><span>Kills</span><span class="sc-val kills">' + t2Kills + '</span></div>' +
               '<div class="sc-row"><span>Remaining</span><span class="sc-val remaining">' + t2Remaining + '/' + t2.players.length + '</span></div>' +
+              '<div class="sc-row"><span>Benched</span><span class="sc-val benched">' + (t2.benched || '—') + '</span></div>' +
             '</div>' +
           '</div>' +
           elimHTML +
@@ -397,9 +399,37 @@
     }
   }
 
+  // ---------- Reels ----------
+  function renderReels() {
+    var grid = document.getElementById("reelsGrid");
+    if (!grid || typeof REELS === "undefined" || REELS.length === 0) return;
+
+    grid.innerHTML = "";
+
+    REELS.slice().reverse().forEach(function (reel) {
+      var card = el("div", "reel-card");
+      var video = document.createElement("video");
+      video.className = "reel-video";
+      video.src = reel.src + "#t=0.001";
+      video.controls = true;
+      video.preload = "metadata";
+      video.playsInline = true;
+      if (reel.landscape) video.classList.add("reel-video-landscape");
+      card.appendChild(video);
+
+      var info = el("div", "reel-info");
+      info.innerHTML =
+        '<div class="reel-title">' + reel.title + '</div>' +
+        '<div class="reel-week">Week ' + reel.week + '</div>';
+      card.appendChild(info);
+
+      grid.appendChild(card);
+    });
+  }
+
   // ---------- Scroll Animations ----------
   function initScrollAnimations() {
-    var targets = document.querySelectorAll(".section-title, .team-card, .rules-card, .leaderboard-wrapper");
+    var targets = document.querySelectorAll(".section-title, .team-card, .reel-card, .rules-card, .leaderboard-wrapper");
     targets.forEach(function (el) { el.classList.add("fade-in"); });
 
     var observer = new IntersectionObserver(function (entries) {
@@ -426,6 +456,7 @@
     renderBracket();
     initBracketTabs();
     renderLeaderboard();
+    renderReels();
     renderTeams();
     initScrollAnimations();
   }
