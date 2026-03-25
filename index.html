@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WECIB Water Wars</title>
+  <meta name="description" content="WECIB Water Wars Tournament Tracker — live bracket, standings, and team stats." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ======== NAVBAR ======== -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo">Water Wars</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#scoreboard">Scoreboard</a></li>
+      <li><a href="#bracket">Bracket</a></li>
+      <li><a href="#leaderboard">Leaderboard</a></li>
+      <li><a href="#teams">Teams</a></li>
+      <li><a href="#rules">Rules</a></li>
+    </ul>
+  </nav>
+
+  <!-- ======== HERO ======== -->
+  <section class="hero" id="hero">
+    <div class="hero-bubbles">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">WECIB Water Wars</h1>
+      <p class="hero-subtitle" id="heroSubtitle"></p>
+      <div class="announcements" id="announcements"></div>
+    </div>
+    <div class="wave">
+      <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
+        <path d="M0,64 C360,150 1080,0 1440,96 L1440,180 L0,180 Z" fill="#f0f9ff"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ======== SCOREBOARD ======== -->
+  <section class="section scoreboard-section" id="scoreboard">
+    <div class="container">
+      <h2 class="section-title">This Week</h2>
+      <p class="section-sub" id="scoreboardSub"></p>
+      <div class="scoreboard-grid" id="scoreboardGrid"></div>
+    </div>
+  </section>
+
+  <!-- ======== BRACKET ======== -->
+  <section class="section section-alt" id="bracket">
+    <div class="container">
+      <h2 class="section-title">Tournament Bracket</h2>
+      <div class="bracket-tabs">
+        <button class="bracket-tab active" data-bracket="winners">Winners Bracket</button>
+        <button class="bracket-tab" data-bracket="losers">Losers Bracket</button>
+      </div>
+      <div id="bracketContent"></div>
+    </div>
+  </section>
+
+  <!-- ======== LEADERBOARD ======== -->
+  <section class="section" id="leaderboard">
+    <div class="container">
+      <h2 class="section-title">Kill Leaderboard</h2>
+      <div class="leaderboard-wrapper" id="leaderboardWrapper"></div>
+    </div>
+  </section>
+
+  <!-- ======== TEAMS ======== -->
+  <section class="section section-alt" id="teams">
+    <div class="container">
+      <h2 class="section-title">Teams</h2>
+      <div class="teams-grid" id="teamsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ======== RULES ======== -->
+  <section class="section section-alt" id="rules">
+    <div class="container">
+      <h2 class="section-title">Rules</h2>
+      <div class="rules-card">
+        <div class="rules-grid">
+          <div class="rule-block">
+            <h3>Format</h3>
+            <p>Teams compete in a team vs. team water battle bracket. Each week, your team is assigned another team to eliminate.</p>
+          </div>
+          <div class="rule-block">
+            <h3>Eliminations</h3>
+            <p>Each team's goal is to eliminate members of the opposing team. Once a player is eliminated, they are out for the remainder of that match but may assist teammates. Eliminated players may <strong>not</strong> shoot the opposing team.</p>
+          </div>
+          <div class="rule-block">
+            <h3>Scoring</h3>
+            <ul>
+              <li><strong>+1 point</strong> per kill</li>
+              <li><strong>+1 point</strong> per player remaining on your team</li>
+            </ul>
+          </div>
+          <div class="rule-block">
+            <h3>Bracket Progression</h3>
+            <p>The winning team advances in the <strong>Winners Bracket</strong>. The losing team moves to the <strong>Losers Bracket</strong>. If a team loses twice, they are eliminated from the tournament.</p>
+          </div>
+          <div class="rule-block">
+            <h3>Winning</h3>
+            <p>Matches continue through both brackets until one final team remains undefeated or wins the final match.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer">
+    <p>WECIB Water Wars &copy; 2026 &mdash; May the driest team win.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
