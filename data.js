@@ -69,7 +69,7 @@ const TEAMS = [
   {
     id: "splash-bros",
     name: "SplashBros",
-    benched: "",
+    benched: "Trevor",
     players: [
       { name: "Beckett", eliminated: false, kills: 0 },
       { name: "Bennet", eliminated: false, kills: 0 },
