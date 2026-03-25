@@ -35,7 +35,7 @@ const TEAMS = [
   },
   {
     id: "the-crackin",
-    name: "The Crackin",
+    name: "The Kraken",
     players: [
       { name: "Khani", eliminated: false, kills: 0 },
       { name: "Jessica", eliminated: true, kills: 0 },
