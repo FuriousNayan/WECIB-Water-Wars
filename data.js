@@ -14,7 +14,7 @@ const TOURNAMENT = {
 };
 
 const ANNOUNCEMENTS = [
-  "Welcome to WECIB Water Wars! Round 1 matchups are live!",
+  "Welcome to Water Wars! Round 1 matchups are live!",
 ];
 
 const PURGE_DAY = {
