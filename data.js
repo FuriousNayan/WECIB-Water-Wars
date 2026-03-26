@@ -67,7 +67,7 @@ const TEAMS = [
   {
     id: "aquabats",
     name: "Aquabats",
-    benched: "",
+    benched: "Rudra",
     players: [
       { name: "Afton", eliminated: false, kills: 0 },
       { name: "Quint", eliminated: true, kills: 0 },
