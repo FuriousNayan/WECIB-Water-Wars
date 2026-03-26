@@ -37,7 +37,7 @@ const TEAMS = [
     name: "Los Angeles Leakers",
     benched: "Abid", // e.g. "Lucas, Abid"
     players: [
-      { name: "Lucas", eliminated: false, kills: 0 },
+      { name: "Lucas", eliminated: false, kills: 2 },
       { name: "Karim", eliminated: false, kills: 0 },
       { name: "Evan Y", eliminated: false, kills: 1 },
       { name: "Abid", eliminated: false, kills: 0 },
@@ -48,9 +48,9 @@ const TEAMS = [
     name: "The Kraken",
     benched: "",
     players: [
-      { name: "Khani", eliminated: false, kills: 0 },
+      { name: "Khani", eliminated: true, kills: 0 },
       { name: "Jessica", eliminated: true, kills: 0 },
-      { name: "Alex", eliminated: false, kills: 0 },
+      { name: "Alex", eliminated: true, kills: 0 },
     ],
   },
   {
@@ -81,8 +81,8 @@ const TEAMS = [
     benched: "Trevor",
     players: [
       { name: "Beckett", eliminated: false, kills: 0 },
-      { name: "Bennet", eliminated: false, kills: 0 },
-      { name: "Nick", eliminated: false, kills: 0 },
+      { name: "Bennett", eliminated: false, kills: 1 },
+      { name: "Nick", eliminated: true, kills: 0 },
       { name: "Trevor", eliminated: false, kills: 0 },
     ],
   },
@@ -91,9 +91,9 @@ const TEAMS = [
     name: "The PowerSplash Girls",
     benched: "Sara",
     players: [
-      { name: "Brandon", eliminated: false, kills: 0 },
+      { name: "Brandon", eliminated: true, kills: 0 },
       { name: "Claire", eliminated: false, kills: 0 },
-      { name: "Sophia", eliminated: false, kills: 0 },
+      { name: "Sophia", eliminated: false, kills: 1 },
       { name: "Sara", eliminated: false, kills: 0 },
     ],
   },
