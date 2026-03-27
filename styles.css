@@ -347,6 +347,13 @@ ul { list-style: none; }
   min-width: 20px; text-align: right;
 }
 
+.match-card.under-construction {
+  text-align: center; border-style: dashed; border-color: var(--gray-300);
+  background: var(--gray-100); opacity: .75;
+}
+.uc-icon { font-size: 1.6rem; padding: 10px 0 2px; }
+.uc-text { font-size: .8rem; font-weight: 600; color: var(--gray-500); padding: 0 10px 14px; }
+
 .bracket-connectors { position: absolute; top: 0; left: 0; pointer-events: none; overflow: visible; }
 
 /* --- Team Cards --- */

@@ -19,6 +19,12 @@
     return MATCHES.find(function (m) { return m.id === id; });
   }
 
+  function activePlayers(team) {
+    if (!team) return [];
+    var benched = team.benched ? team.benched.split(",").map(function (s) { return s.trim(); }) : [];
+    return team.players.filter(function (p) { return benched.indexOf(p.name) === -1; });
+  }
+
   function el(tag, cls, html) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -76,13 +82,14 @@
       var t2 = getTeam(match.team2);
       if (!t1 || !t2) return;
 
-      var t1Kills = t1.players.reduce(function (s, p) { return s + p.kills; }, 0);
-      var t2Kills = t2.players.reduce(function (s, p) { return s + p.kills; }, 0);
-      var t1Remaining = t1.players.filter(function (p) { return !p.eliminated; }).length;
-      var t2Remaining = t2.players.filter(function (p) { return !p.eliminated; }).length;
-      var isComplete = match.status === "completed";
-      var t1Pts = t1Kills + (isComplete ? t1Remaining : 0);
-      var t2Pts = t2Kills + (isComplete ? t2Remaining : 0);
+      var t1Active = activePlayers(t1);
+      var t2Active = activePlayers(t2);
+      var t1Kills = t1Active.reduce(function (s, p) { return s + p.kills; }, 0);
+      var t2Kills = t2Active.reduce(function (s, p) { return s + p.kills; }, 0);
+      var t1Remaining = t1Active.filter(function (p) { return !p.eliminated; }).length;
+      var t2Remaining = t2Active.filter(function (p) { return !p.eliminated; }).length;
+      var t1Pts = t1Kills + t1Remaining;
+      var t2Pts = t2Kills + t2Remaining;
 
       var statusLabel = match.status === "in-progress" ? "Live" : match.status === "completed" ? "Final" : "Upcoming";
       var t1Cls = match.winner === match.team1 ? " is-winner" : match.winner === match.team2 ? " is-loser" : "";
@@ -131,12 +138,12 @@
           '<div class="sc-breakdown">' +
             '<div class="sc-col"><div class="sc-col-title">' + t1.name + '</div>' +
               '<div class="sc-row"><span>Kills</span><span class="sc-val kills">' + t1Kills + '</span></div>' +
-              '<div class="sc-row"><span>Remaining</span><span class="sc-val remaining">' + t1Remaining + '/' + t1.players.length + '</span></div>' +
+              '<div class="sc-row"><span>Remaining</span><span class="sc-val remaining">' + t1Remaining + '/' + t1Active.length + '</span></div>' +
               '<div class="sc-row"><span>Benched</span><span class="sc-val benched">' + (t1.benched || '—') + '</span></div>' +
             '</div>' +
             '<div class="sc-col"><div class="sc-col-title">' + t2.name + '</div>' +
               '<div class="sc-row"><span>Kills</span><span class="sc-val kills">' + t2Kills + '</span></div>' +
-              '<div class="sc-row"><span>Remaining</span><span class="sc-val remaining">' + t2Remaining + '/' + t2.players.length + '</span></div>' +
+              '<div class="sc-row"><span>Remaining</span><span class="sc-val remaining">' + t2Remaining + '/' + t2Active.length + '</span></div>' +
               '<div class="sc-row"><span>Benched</span><span class="sc-val benched">' + (t2.benched || '—') + '</span></div>' +
             '</div>' +
           '</div>' +
@@ -165,9 +172,17 @@
         col.appendChild(el("div", "round-label", round.label));
 
         var matchesWrap = el("div", "round-matches");
-        round.matchIds.forEach(function (matchId) {
-          matchesWrap.appendChild(buildMatchCard(getMatch(matchId)));
-        });
+        if (round.underConstruction) {
+          var placeholder = el("div", "match-card under-construction");
+          placeholder.innerHTML = '<div class="match-label">TBD</div>' +
+            '<div class="uc-icon">\u{1F6A7}</div>' +
+            '<div class="uc-text">Under Construction</div>';
+          matchesWrap.appendChild(placeholder);
+        } else {
+          round.matchIds.forEach(function (matchId) {
+            matchesWrap.appendChild(buildMatchCard(getMatch(matchId)));
+          });
+        }
         col.appendChild(matchesWrap);
         view.appendChild(col);
       });
@@ -205,6 +220,9 @@
     card.appendChild(el("div", "match-label", match.label));
     card.appendChild(buildTeamRow(match, "team1"));
     card.appendChild(buildTeamRow(match, "team2"));
+    if (match.team3 !== undefined) {
+      card.appendChild(buildTeamRow(match, "team3"));
+    }
     return card;
   }
 
