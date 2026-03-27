@@ -21,7 +21,7 @@ const PURGE_DAY = {
   active: true,
   rules: [
     "Safety items are BANNED — no protection allowed.",
-    "Location sharing may be turned OFF from 3:00 PM – 6:00 PM.",
+    "Location sharing may be turned OFF from 12:00 PM – 3:00 PM.",
     "All other standard rules still apply.",
   ],
 };
