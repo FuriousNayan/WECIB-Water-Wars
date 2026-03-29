@@ -60,7 +60,7 @@ const TEAMS = [
     players: [
       { name: "Adam", eliminated: false, kills: 0 },
       { name: "Keshav", eliminated: false, kills: 0 },
-      { name: "Evan G", eliminated: false, kills: 1 },
+      { name: "Evan G", eliminated: false, kills: 2 },
       { name: "Caleb", eliminated: false, kills: 1 },
     ],
   },
@@ -69,7 +69,7 @@ const TEAMS = [
     name: "Aquabats",
     benched: "Rudra",
     players: [
-      { name: "Afton", eliminated: false, kills: 0 },
+      { name: "Afton", eliminated: true, kills: 0 },
       { name: "Quint", eliminated: true, kills: 0 },
       { name: "Andrew", eliminated: true, kills: 0 },
       { name: "Rudra", eliminated: false, kills: 0 },
@@ -146,7 +146,7 @@ const TEAMS = [
     benched: "",
     players: [
       { name: "Sham", eliminated: false, kills: 0 },
-      { name: "Maryam", eliminated: true, kills: 0 },
+      { name: "Maryam", eliminated: true, kills: 1 },
       { name: "Farah", eliminated: true, kills: 0 },
     ],
   },
