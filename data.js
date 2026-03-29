@@ -18,7 +18,7 @@ const ANNOUNCEMENTS = [
 ];
 
 const PURGE_DAY = {
-  active: true,
+  active: false,
   rules: [
     "Safety items are BANNED — no protection allowed.",
     "Location sharing may be turned OFF from 12:00 PM – 3:00 PM.",
@@ -124,7 +124,7 @@ const TEAMS = [
     name: "SquirtleSquad",
     benched: "Dennis",
     players: [
-      { name: "Parth", eliminated: false, kills: 0 },
+      { name: "Parth", eliminated: true, kills: 0 },
       { name: "Dennis", eliminated: false, kills: 0 },
       { name: "Surya", eliminated: false, kills: 0 },
       { name: "Emerick", eliminated: false, kills: 0 },
@@ -137,7 +137,7 @@ const TEAMS = [
     players: [
       { name: "Nayan", eliminated: false, kills: 0 },
       { name: "Gabe", eliminated: false, kills: 0 },
-      { name: "Jack", eliminated: false, kills: 0 },
+      { name: "Jack", eliminated: false, kills: 1 },
     ],
   },
   {
@@ -146,8 +146,8 @@ const TEAMS = [
     benched: "",
     players: [
       { name: "Sham", eliminated: false, kills: 0 },
-      { name: "Maryam", eliminated: false, kills: 0 },
-      { name: "Farah", eliminated: false, kills: 0 },
+      { name: "Maryam", eliminated: true, kills: 0 },
+      { name: "Farah", eliminated: true, kills: 0 },
     ],
   },
   {
@@ -155,9 +155,9 @@ const TEAMS = [
     name: "Bikini Bottom Soakers",
     benched: "",
     players: [
-      { name: "Mays", eliminated: false, kills: 0 },
-      { name: "Tanu", eliminated: false, kills: 0 },
-      { name: "Sravya", eliminated: false, kills: 0 },
+      { name: "Mays", eliminated: false, kills: 1 },
+      { name: "Tanu", eliminated: false, kills: 1 },
+      { name: "Sravya", eliminated: true, kills: 0 },
     ],
   },
 ];
