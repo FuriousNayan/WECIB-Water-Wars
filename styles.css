@@ -292,11 +292,18 @@ ul { list-style: none; }
   display: flex; flex-direction: column;
   padding: 0 20px; min-width: 210px; flex-shrink: 0;
 }
+.bracket-round.header-only {
+  min-width: auto; justify-content: flex-start;
+}
 .round-label {
   text-align: center; font-size: .75rem; font-weight: 700;
   color: var(--gray-500); text-transform: uppercase; letter-spacing: 2px;
   padding: 6px 12px; background: var(--gray-100); border-radius: var(--radius-sm);
-  margin-bottom: 12px; flex-shrink: 0;
+  margin-bottom: 2px; flex-shrink: 0;
+}
+.round-dates {
+  text-align: center; font-size: .68rem; font-weight: 500;
+  color: var(--gray-500); margin-bottom: 12px; flex-shrink: 0;
 }
 .round-matches {
   display: flex; flex-direction: column;

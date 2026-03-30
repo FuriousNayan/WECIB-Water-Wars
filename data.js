@@ -179,21 +179,24 @@ const MATCHES = [
   { id: 6,  bracket: "winners", round: 1, team1: "drip-or-drown",    team2: "bikini-bottom",      team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "M6" },
 
   // ===== WINNERS BRACKET — ROUND 2 =====
-  { id: 7,  bracket: "winners", round: 2, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "M7",  team1Placeholder: "Winner of M1", team2Placeholder: "Winner of M2" },
-  { id: 8,  bracket: "winners", round: 2, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "M8",  team1Placeholder: "Winner of M3", team2Placeholder: "Winner of M4" },
-  { id: 9,  bracket: "winners", round: 2, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "M9",  team1Placeholder: "Winner of M5", team2Placeholder: "Winner of M6" },
+  { id: 7,  bracket: "winners", round: 2, team1: "la-leakers", team2: "splash-team-6", team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "M7",  team1Placeholder: "Winner of M1", team2Placeholder: "Winner of M2" },
+  { id: 8,  bracket: "winners", round: 2, team1: "powersplash-girls", team2: "baja-blasters", team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "M8",  team1Placeholder: "Winner of M3", team2Placeholder: "Winner of M4" },
+  { id: 9,  bracket: "winners", round: 2, team1: "squirtshank", team2: "bikini-bottom", team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "M9",  team1Placeholder: "Winner of M5", team2Placeholder: "Winner of M6" },
 
   // ===== WINNERS BRACKET — SEMIFINALS =====
-  { id: 10, bracket: "winners", round: 3, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "SF1", team1Placeholder: "Winner of M7", team2Placeholder: "Losers Bracket Winner" },
-  { id: 11, bracket: "winners", round: 3, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "SF2", team1Placeholder: "Winner of M8", team2Placeholder: "Winner of M9" },
+  { id: 10, bracket: "winners", round: 3, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "SF1", team1Placeholder: "Winner of M7", team2Placeholder: "Winner of M8" },
+  { id: 11, bracket: "winners", round: 3, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "SF2", team1Placeholder: "Winner of M9", team2Placeholder: "Losers Bracket Winner" },
 
   // ===== WINNERS BRACKET — FINALS =====
   { id: 12, bracket: "winners", round: 4, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "Final", team1Placeholder: "Winner of SF1", team2Placeholder: "Winner of SF2" },
 
   // ===== LOSERS BRACKET — ROUND 1 =====
-  { id: 13, bracket: "losers", round: 1, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "LB1", team1Placeholder: "Loser of M1", team2Placeholder: "Loser of M2" },
-  { id: 14, bracket: "losers", round: 1, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "LB2", team1Placeholder: "Loser of M3", team2Placeholder: "Loser of M4" },
-  { id: 15, bracket: "losers", round: 1, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "LB3", team1Placeholder: "Loser of M5", team2Placeholder: "Loser of M6" },
+  { id: 13, bracket: "losers", round: 1, team1: "the-crackin", team2: "aquabats", team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "LB1", team1Placeholder: "Loser of M1", team2Placeholder: "Loser of M2" },
+  { id: 14, bracket: "losers", round: 1, team1: "splash-bros", team2: "certified-soaker", team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "LB2", team1Placeholder: "Loser of M3", team2Placeholder: "Loser of M4" },
+  { id: 15, bracket: "losers", round: 1, team1: "squirtle-squad", team2: "drip-or-drown", team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "LB3", team1Placeholder: "Loser of M5", team2Placeholder: "Loser of M6" },
+
+  // ===== LOSERS BRACKET — FINAL =====
+  { id: 16, bracket: "losers", round: 2, team1: null, team2: null, team3: null, team1Score: null, team2Score: null, team3Score: null, winner: null, status: "upcoming", label: "Losers Final", team1Placeholder: "Winner of LB1", team2Placeholder: "Winner of LB2", team3Placeholder: "Winner of LB3" },
 
 ];
 
@@ -205,24 +208,30 @@ const BRACKET_STRUCTURE = {
   winners: {
     title: "Winners Bracket",
     rounds: [
-      { label: "Round 1",      matchIds: [1, 2, 3, 4, 5, 6] },
-      { label: "Round 2",      matchIds: [7, 8, 9] },
-      { label: "Semifinals",   matchIds: [], underConstruction: true },
-      { label: "Finals",       matchIds: [], underConstruction: true },
+      { label: "Round 1",      dates: "Mar 24 – Mar 29", matchIds: [1, 2, 3, 4, 5, 6] },
+      { label: "Round 2",      dates: "Apr 5 – Apr 11",  matchIds: [7, 8, 9] },
+      { label: "Bye Week",     dates: "Apr 12 – Apr 18", matchIds: [], headerOnly: true },
+      { label: "Semifinals",   dates: "Apr 19 – Apr 25", matchIds: [10, 11] },
+      { label: "Finals",       dates: "Apr 26 – May 2",  matchIds: [12] },
     ],
     connections: [
       { from: [1, 2], to: 7 },
       { from: [3, 4], to: 8 },
       { from: [5, 6], to: 9 },
+      { from: [7, 8], to: 10 },
+      { from: [9],    to: 11 },
+      { from: [10, 11], to: 12 },
     ],
   },
   losers: {
     title: "Losers Bracket",
     rounds: [
-      { label: "Round 2",      matchIds: [13, 14, 15] },
-      { label: "Losers Final", matchIds: [], underConstruction: true },
+      { label: "Round 2",      dates: "Apr 5 – Apr 11",  matchIds: [13, 14, 15] },
+      { label: "Losers Final", dates: "Apr 12 – Apr 18", matchIds: [16] },
     ],
-    connections: [],
+    connections: [
+      { from: [13, 14, 15], to: 16 },
+    ],
   },
 };
 

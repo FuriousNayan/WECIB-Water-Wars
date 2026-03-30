@@ -168,8 +168,16 @@
       var view = el("div", "bracket-view" + (key === "losers" ? " losers-bracket" : ""));
 
       cfg.rounds.forEach(function (round) {
-        var col = el("div", "bracket-round");
+        var col = el("div", "bracket-round" + (round.headerOnly ? " header-only" : ""));
         col.appendChild(el("div", "round-label", round.label));
+        if (round.dates) {
+          col.appendChild(el("div", "round-dates", round.dates));
+        }
+
+        if (round.headerOnly) {
+          view.appendChild(col);
+          return;
+        }
 
         var matchesWrap = el("div", "round-matches");
         if (round.underConstruction) {
@@ -289,6 +297,10 @@
       if (fromRects.length > 1) {
         var ys = fromRects.map(function (r) { return r.y; });
         d += "M " + midX + " " + Math.min.apply(null, ys) + " V " + Math.max.apply(null, ys) + " ";
+      }
+
+      if (fromRects.length === 1 && fromRects[0].y !== toY) {
+        d += "M " + midX + " " + fromRects[0].y + " V " + toY + " ";
       }
 
       d += "M " + midX + " " + toY + " H " + toX;
