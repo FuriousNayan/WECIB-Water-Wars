@@ -63,18 +63,19 @@
 
     sub.textContent = TOURNAMENT.status + " — Week " + TOURNAMENT.currentWeek;
 
-    var currentMatches = MATCHES.filter(function (m) {
-      return m.bracket === "winners" && m.round === TOURNAMENT.currentWeek;
-    });
-    if (currentMatches.length === 0) {
+    var weekIds = TOURNAMENT.weekMatches && TOURNAMENT.weekMatches[TOURNAMENT.currentWeek];
+    var currentMatches;
+    if (weekIds && weekIds.length > 0) {
+      currentMatches = weekIds.map(function (id) { return getMatch(id); }).filter(Boolean);
+    } else {
       currentMatches = MATCHES.filter(function (m) {
         return m.status === "in-progress";
       });
-    }
-    if (currentMatches.length === 0) {
-      currentMatches = MATCHES.filter(function (m) {
-        return m.bracket === "winners" && m.round === 1;
-      });
+      if (currentMatches.length === 0) {
+        currentMatches = MATCHES.filter(function (m) {
+          return m.bracket === "winners" && m.round === 1;
+        });
+      }
     }
 
     currentMatches.forEach(function (match, idx) {
@@ -84,8 +85,8 @@
 
       var t1Active = activePlayers(t1);
       var t2Active = activePlayers(t2);
-      var t1Kills = t1Active.reduce(function (s, p) { return s + p.kills; }, 0);
-      var t2Kills = t2Active.reduce(function (s, p) { return s + p.kills; }, 0);
+      var t1Kills = t1Active.reduce(function (s, p) { return s + (p.weekKills || 0); }, 0);
+      var t2Kills = t2Active.reduce(function (s, p) { return s + (p.weekKills || 0); }, 0);
       var t1Remaining = t1Active.filter(function (p) { return !p.eliminated; }).length;
       var t2Remaining = t2Active.filter(function (p) { return !p.eliminated; }).length;
       var t1Pts = t1Kills + t1Remaining;
