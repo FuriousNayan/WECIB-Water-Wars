@@ -9,19 +9,19 @@
 
 const TOURNAMENT = {
   name: "WECIB Water Wars",
-  currentWeek: 1,
-  status: "Round 1",
+  currentWeek: 2,
+  status: "Round 2",
 };
 
 const ANNOUNCEMENTS = [
-  "Welcome to Water Wars! Round 1 matchups are live!",
+  "Welcome to Water Wars! Round 2 matchups are live!",
 ];
 
 const PURGE_DAY = {
-  active: false,
+  active: true,
   rules: [
     "Safety items are BANNED — no protection allowed.",
-    "Location sharing may be turned OFF from 12:00 PM – 3:00 PM.",
+    "Location sharing may be turned OFF from 2:30 PM – 5:30 PM.",
     "All other standard rules still apply.",
   ],
 };
