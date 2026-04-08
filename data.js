@@ -25,7 +25,7 @@ const ANNOUNCEMENTS = [
 ];
 
 const PURGE_DAY = {
-  active: true,
+  active: false,
   rules: [
     "Safety items are BANNED — no protection allowed.",
     "Location sharing may be turned OFF from 2:30 PM – 5:30 PM.",
@@ -36,10 +36,9 @@ const PURGE_DAY = {
 // ----------------------------------------------------------------
 //  TEAMS
 //  - To mark a player eliminated in the current match, set eliminated: true
-//  - kills: cumulative total across all weeks (used for leaderboard)
-//  - weekKills: kills in the current week only (used for scoreboard)
-//    When a player gets a kill, increment BOTH kills and weekKills.
-//    Reset weekKills to 0 (or remove it) at the start of each new week.
+//  - kills: season total (leaderboard, team cards)
+//  - weekKills: this week only — This Week scoreboard sums this; omit or 0 = no week kills yet
+//    On each kill this week: increment kills AND weekKills. New week: set everyone’s weekKills to 0
 // ----------------------------------------------------------------
 const TEAMS = [
   {
@@ -90,9 +89,9 @@ const TEAMS = [
     name: "SplashBros",
     benched: "",
     players: [
-      { name: "Beckett", eliminated: false, kills: 0 },
-      { name: "Bennett", eliminated: false, kills: 1 },
-      { name: "Nick", eliminated: false, kills: 0 },
+      { name: "Beckett", eliminated: false, kills: 1, weekKills: 1 },
+      { name: "Bennett", eliminated: true, kills: 1 },
+      { name: "Nick", eliminated: true, kills: 1, weekKills: 1 },
       { name: "Trevor", eliminated: false, kills: 0 },
     ],
   },
@@ -112,10 +111,10 @@ const TEAMS = [
     name: "Certified Soaker Boys",
     benched: "",
     players: [
-      { name: "Arham", eliminated: false, kills: 0 },
+      { name: "Arham", eliminated: true, kills: 0 },
       { name: "Marcus", eliminated: false, kills: 0 },
       { name: "Melo", eliminated: false, kills: 1 },
-      { name: "Victor", eliminated: false, kills: 0 },
+      { name: "Victor", eliminated: true, kills: 2, weekKills: 2 },
     ],
   },
   {

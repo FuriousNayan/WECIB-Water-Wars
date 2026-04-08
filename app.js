@@ -61,6 +61,8 @@
     var grid = document.getElementById("scoreboardGrid");
     if (!sub || !grid) return;
 
+    grid.innerHTML = "";
+
     sub.textContent = TOURNAMENT.status + " — Week " + TOURNAMENT.currentWeek;
 
     var weekIds = TOURNAMENT.weekMatches && TOURNAMENT.weekMatches[TOURNAMENT.currentWeek];
@@ -78,6 +80,10 @@
       }
     }
 
+    function scoreboardKills(p) {
+      return typeof p.weekKills === "number" ? p.weekKills : 0;
+    }
+
     currentMatches.forEach(function (match, idx) {
       var t1 = getTeam(match.team1);
       var t2 = getTeam(match.team2);
@@ -85,8 +91,8 @@
 
       var t1Active = activePlayers(t1);
       var t2Active = activePlayers(t2);
-      var t1Kills = t1Active.reduce(function (s, p) { return s + (p.weekKills || 0); }, 0);
-      var t2Kills = t2Active.reduce(function (s, p) { return s + (p.weekKills || 0); }, 0);
+      var t1Kills = t1Active.reduce(function (s, p) { return s + scoreboardKills(p); }, 0);
+      var t2Kills = t2Active.reduce(function (s, p) { return s + scoreboardKills(p); }, 0);
       var t1Remaining = t1Active.filter(function (p) { return !p.eliminated; }).length;
       var t2Remaining = t2Active.filter(function (p) { return !p.eliminated; }).length;
       var t1Pts = t1Kills + t1Remaining;
