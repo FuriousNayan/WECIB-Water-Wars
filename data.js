@@ -46,10 +46,10 @@ const TEAMS = [
     name: "Los Angeles LEAKrs",
     benched: "", // e.g. "Lucas, Abid"
     players: [
-      { name: "Lucas", eliminated: false, kills: 2 },
+      { name: "Lucas", eliminated: false, kills: 3},
       { name: "Karim", eliminated: false, kills: 0 },
       { name: "Evan Y", eliminated: false, kills: 1 },
-      { name: "Abid", eliminated: false, kills: 1 },
+      { name: "Abid", eliminated: false, kills: 1, weekKills: 1 },
     ],
   },
   {
