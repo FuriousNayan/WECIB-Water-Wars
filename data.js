@@ -49,7 +49,7 @@ const TEAMS = [
       { name: "Lucas", eliminated: false, kills: 2 },
       { name: "Karim", eliminated: false, kills: 0 },
       { name: "Evan Y", eliminated: false, kills: 1 },
-      { name: "Abid", eliminated: false, kills: 0 },
+      { name: "Abid", eliminated: false, kills: 1 },
     ],
   },
   {
@@ -68,7 +68,7 @@ const TEAMS = [
     benched: "",
     players: [
       { name: "Adam", eliminated: false, kills: 0 },
-      { name: "Keshav", eliminated: false, kills: 0 },
+      { name: "Keshav", eliminated: true, kills: 0 },
       { name: "Evan G", eliminated: false, kills: 2 },
       { name: "Caleb", eliminated: false, kills: 1 },
     ],
