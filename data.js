@@ -92,7 +92,7 @@ const TEAMS = [
       { name: "Beckett", eliminated: false, kills: 1, weekKills: 1 },
       { name: "Bennett", eliminated: true, kills: 1 },
       { name: "Nick", eliminated: true, kills: 1, weekKills: 1 },
-      { name: "Trevor", eliminated: false, kills: 0 },
+      { name: "Trevor", eliminated: true, kills: 0 },
     ],
   },
   {
@@ -113,7 +113,7 @@ const TEAMS = [
     players: [
       { name: "Arham", eliminated: true, kills: 0 },
       { name: "Marcus", eliminated: false, kills: 0 },
-      { name: "Melo", eliminated: false, kills: 1 },
+      { name: "Melo", eliminated: false, kills: 2, weekKills: 1 },
       { name: "Victor", eliminated: true, kills: 2, weekKills: 2 },
     ],
   },
@@ -135,7 +135,7 @@ const TEAMS = [
     players: [
       { name: "Parth", eliminated: false, kills: 0 },
       { name: "Dennis", eliminated: false, kills: 0 },
-      { name: "Surya", eliminated: false, kills: 0 },
+      { name: "Surya", eliminated: false, kills: 1, weekKills: 1 },
       { name: "Emerick", eliminated: false, kills: 0 },
     ],
   },
@@ -154,7 +154,7 @@ const TEAMS = [
     name: "Drip or Drown",
     benched: "",
     players: [
-      { name: "Sham", eliminated: false, kills: 0 },
+      { name: "Sham", eliminated: true, kills: 0 },
       { name: "Maryam", eliminated: false, kills: 1 },
       { name: "Farah", eliminated: false, kills: 0 },
     ],
