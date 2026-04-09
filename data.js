@@ -48,7 +48,7 @@ const TEAMS = [
     players: [
       { name: "Lucas", eliminated: false, kills: 3},
       { name: "Karim", eliminated: false, kills: 0 },
-      { name: "Evan Y", eliminated: false, kills: 1 },
+      { name: "Evan Y", eliminated: false, kills: 2, weekKills: 1 },
       { name: "Abid", eliminated: false, kills: 1, weekKills: 1 },
     ],
   },
@@ -70,7 +70,7 @@ const TEAMS = [
       { name: "Adam", eliminated: false, kills: 0 },
       { name: "Keshav", eliminated: true, kills: 0 },
       { name: "Evan G", eliminated: false, kills: 2 },
-      { name: "Caleb", eliminated: false, kills: 1 },
+      { name: "Caleb", eliminated: true, kills: 1 },
     ],
   },
   {
