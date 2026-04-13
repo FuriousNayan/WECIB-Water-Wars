@@ -84,13 +84,93 @@
       return typeof p.weekKills === "number" ? p.weekKills : 0;
     }
 
+    function sideStats(team) {
+      var active = team ? activePlayers(team) : [];
+      var kills = active.reduce(function (s, p) { return s + scoreboardKills(p); }, 0);
+      var remaining = active.filter(function (p) { return !p.eliminated; }).length;
+      return {
+        kills: kills,
+        remaining: remaining,
+        pts: kills + remaining,
+        activeLen: active.length,
+        benched: team ? (team.benched || "—") : "—",
+        eliminated: team ? team.players.filter(function (p) { return p.eliminated; }) : [],
+      };
+    }
+
     currentMatches.forEach(function (match, idx) {
+      if (Object.prototype.hasOwnProperty.call(match, "team3")) {
+        var slots = [
+          { id: match.team1, team: match.team1 ? getTeam(match.team1) : null, ph: match.team1Placeholder },
+          { id: match.team2, team: match.team2 ? getTeam(match.team2) : null, ph: match.team2Placeholder },
+          { id: match.team3, team: match.team3 ? getTeam(match.team3) : null, ph: match.team3Placeholder },
+        ];
+        var statusLabel3 = match.status === "in-progress" ? "Live" : match.status === "completed" ? "Final" : "Upcoming";
+        var rowHtml = "";
+        var colsHtml = "";
+        var allElim = [];
+
+        slots.forEach(function (slot, si) {
+          var st = sideStats(slot.team);
+          var displayName = slot.team ? slot.team.name : (slot.ph || "TBD");
+          var winCls = "";
+          if (match.winner && slot.id) {
+            winCls = match.winner === slot.id ? " is-winner" : " is-loser";
+          } else if (!slot.id) {
+            winCls = " placeholder";
+          }
+          rowHtml +=
+            '<div class="sc-team-side' + winCls + '">' +
+              '<span class="sc-team-name">' + displayName + '</span>' +
+              '<span class="sc-team-pts">' + st.pts + '</span>' +
+              '<span class="sc-team-pts-label">Points</span>' +
+            '</div>';
+          colsHtml +=
+            '<div class="sc-col">' +
+              '<div class="sc-col-title">' + displayName + '</div>' +
+              '<div class="sc-row"><span>Kills</span><span class="sc-val kills">' + st.kills + '</span></div>' +
+              '<div class="sc-row"><span>Remaining</span><span class="sc-val remaining">' + st.remaining + '/' + (st.activeLen || 0) + '</span></div>' +
+              '<div class="sc-row"><span>Benched</span><span class="sc-val benched">' + st.benched + '</span></div>' +
+            '</div>';
+          st.eliminated.forEach(function (p) {
+            allElim.push({ name: p.name, teamName: slot.team ? slot.team.name : displayName });
+          });
+        });
+
+        var elimHTML3;
+        if (allElim.length > 0) {
+          var events3 = "";
+          allElim.forEach(function (e) {
+            events3 += '<div class="sc-event"><div class="sc-dot"></div><div class="sc-body">' +
+              '<div class="sc-text"><span class="victim">' + e.name + '</span> <span class="team-label">(' + e.teamName + ')</span> was eliminated</div></div></div>';
+          });
+          elimHTML3 = '<div class="sc-elim-title">Eliminations</div><div class="sc-timeline">' + events3 + '</div>';
+        } else {
+          elimHTML3 = '<div class="sc-no-events">No eliminations yet</div>';
+        }
+
+        var card3 = el("div", "scoreboard-card scoreboard-card-three");
+        card3.innerHTML =
+          '<div class="scoreboard-card-header">' +
+            '<span class="scoreboard-card-label">' + match.label + '</span>' +
+            '<span class="sc-status ' + match.status + '">' + statusLabel3 + '</span>' +
+          '</div>' +
+          '<div class="scoreboard-score-row three-way">' + rowHtml + '</div>' +
+          '<div class="sc-details">' +
+            '<div class="sc-breakdown three-way">' + colsHtml + '</div>' +
+            elimHTML3 +
+          '</div>';
+        grid.appendChild(card3);
+        return;
+      }
+
       var t1 = getTeam(match.team1);
-      var t2 = getTeam(match.team2);
-      if (!t1 || !t2) return;
+      var t2 = match.team2 ? getTeam(match.team2) : null;
+      if (!t1) return;
+      if (!t2 && !match.team2Placeholder) return;
 
       var t1Active = activePlayers(t1);
-      var t2Active = activePlayers(t2);
+      var t2Active = t2 ? activePlayers(t2) : [];
       var t1Kills = t1Active.reduce(function (s, p) { return s + scoreboardKills(p); }, 0);
       var t2Kills = t2Active.reduce(function (s, p) { return s + scoreboardKills(p); }, 0);
       var t1Remaining = t1Active.filter(function (p) { return !p.eliminated; }).length;
@@ -98,13 +178,17 @@
       var t1Pts = t1Kills + t1Remaining;
       var t2Pts = t2Kills + t2Remaining;
 
+      var t2DisplayName = t2 ? t2.name : (match.team2Placeholder || "TBD");
+      var t2Benched = t2 ? (t2.benched || "—") : "—";
+
       var statusLabel = match.status === "in-progress" ? "Live" : match.status === "completed" ? "Final" : "Upcoming";
       var t1Cls = match.winner === match.team1 ? " is-winner" : match.winner === match.team2 ? " is-loser" : "";
-      var t2Cls = match.winner === match.team2 ? " is-winner" : match.winner === match.team1 ? " is-loser" : "";
+      var t2Cls = match.team2 && match.winner === match.team2 ? " is-winner" : match.team2 && match.winner === match.team1 ? " is-loser" : "";
+      if (!t2) t2Cls += " placeholder";
 
       var elimHTML = "";
       var t1Elim = t1.players.filter(function (p) { return p.eliminated; });
-      var t2Elim = t2.players.filter(function (p) { return p.eliminated; });
+      var t2Elim = t2 ? t2.players.filter(function (p) { return p.eliminated; }) : [];
       var anyElim = t1Elim.length > 0 || t2Elim.length > 0;
 
       if (anyElim) {
@@ -136,7 +220,7 @@
           '</div>' +
           '<div class="sc-vs">VS</div>' +
           '<div class="sc-team-side' + t2Cls + '">' +
-            '<span class="sc-team-name">' + t2.name + '</span>' +
+            '<span class="sc-team-name">' + t2DisplayName + '</span>' +
             '<span class="sc-team-pts">' + t2Pts + '</span>' +
             '<span class="sc-team-pts-label">Points</span>' +
           '</div>' +
@@ -148,10 +232,10 @@
               '<div class="sc-row"><span>Remaining</span><span class="sc-val remaining">' + t1Remaining + '/' + t1Active.length + '</span></div>' +
               '<div class="sc-row"><span>Benched</span><span class="sc-val benched">' + (t1.benched || '—') + '</span></div>' +
             '</div>' +
-            '<div class="sc-col"><div class="sc-col-title">' + t2.name + '</div>' +
+            '<div class="sc-col"><div class="sc-col-title">' + t2DisplayName + '</div>' +
               '<div class="sc-row"><span>Kills</span><span class="sc-val kills">' + t2Kills + '</span></div>' +
-              '<div class="sc-row"><span>Remaining</span><span class="sc-val remaining">' + t2Remaining + '/' + t2Active.length + '</span></div>' +
-              '<div class="sc-row"><span>Benched</span><span class="sc-val benched">' + (t2.benched || '—') + '</span></div>' +
+              '<div class="sc-row"><span>Remaining</span><span class="sc-val remaining">' + t2Remaining + '/' + (t2Active.length || 0) + '</span></div>' +
+              '<div class="sc-row"><span>Benched</span><span class="sc-val benched">' + t2Benched + '</span></div>' +
             '</div>' +
           '</div>' +
           elimHTML +

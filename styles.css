@@ -209,11 +209,29 @@ ul { list-style: none; }
   background: var(--gray-100);
 }
 
+.scoreboard-score-row.three-way .sc-team-side {
+  border-right: 1px solid var(--gray-200);
+  min-width: 0;
+}
+.scoreboard-score-row.three-way .sc-team-side:last-child { border-right: 0; }
+
+.scoreboard-card-three {
+  grid-column: 1 / -1;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
 .sc-details { padding: 16px 20px; }
 
 .sc-breakdown {
   display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
   margin-bottom: 16px;
+}
+.sc-breakdown.three-way {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+@media (max-width: 900px) {
+  .sc-breakdown.three-way { grid-template-columns: 1fr; }
 }
 .sc-col { display: flex; flex-direction: column; gap: 4px; }
 .sc-col-title { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500); margin-bottom: 2px; }
