@@ -21,7 +21,7 @@ const TOURNAMENT = {
 };
 
 const ANNOUNCEMENTS = [
-  "Welcome to Water Wars! Round 2 matchups are live!",
+  "Welcome to Water Wars! Round 3 matchups are live!",
 ];
 
 const PURGE_DAY = {
@@ -131,7 +131,7 @@ const TEAMS = [
   {
     id: "squirtle-squad",
     name: "SquirtleSquad",
-    benched: "",
+    benched: "Emerick",
     players: [
       { name: "Parth", eliminated: false, kills: 0 },
       { name: "Dennis", eliminated: false, kills: 0 },
