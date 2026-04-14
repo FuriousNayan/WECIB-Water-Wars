@@ -109,7 +109,7 @@ const TEAMS = [
   {
     id: "certified-soaker",
     name: "Certified Soaker Boys",
-    benched: "",
+    benched: "Melo",
     players: [
       { name: "Arham", eliminated: false, kills: 0 },
       { name: "Marcus", eliminated: false, kills: 0 },
