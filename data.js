@@ -200,12 +200,12 @@ const MATCHES = [
   { id: 12, bracket: "winners", round: 4, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "Final", team1Placeholder: "Winner of SF1", team2Placeholder: "Winner of SF2" },
 
   // ===== LOSERS BRACKET — ROUND 1 =====
-  { id: 13, bracket: "losers", round: 1, team1: "the-crackin", team2: "aquabats", team1Score: 3, team2Score: 3, winner: null, status: "in-progress", label: "LB1", team1Placeholder: "Loser of M1", team2Placeholder: "Loser of M2" },
+  { id: 13, bracket: "losers", round: 1, team1: "the-crackin", team2: "aquabats", team1Score: 4, team2Score: 3, winner: "the-crackin", status: "completed", label: "LB1", team1Placeholder: "Loser of M1", team2Placeholder: "Loser of M2" },
   { id: 14, bracket: "losers", round: 1, team1: "splash-bros", team2: "certified-soaker", team1Score: 3, team2Score: 5, winner: "certified-soaker", status: "completed", label: "LB2", team1Placeholder: "Loser of M3", team2Placeholder: "Loser of M4" },
   { id: 15, bracket: "losers", round: 1, team1: "squirtle-squad", team2: "drip-or-drown", team1Score: 4, team2Score: 2, winner: "squirtle-squad", status: "completed", label: "LB3", team1Placeholder: "Loser of M5", team2Placeholder: "Loser of M6" },
 
   // ===== LOSERS BRACKET — FINAL =====
-  { id: 16, bracket: "losers", round: 2, team1: null, team2: "certified-soaker", team3: "squirtle-squad", team1Score: null, team2Score: null, team3Score: null, winner: null, status: "in-progress", label: "Losers Final", team1Placeholder: "Winner of LB1", team2Placeholder: "Winner of LB2", team3Placeholder: "Winner of LB3" },
+  { id: 16, bracket: "losers", round: 2, team1: "the-crackin", team2: "certified-soaker", team3: "squirtle-squad", team1Score: null, team2Score: null, team3Score: null, winner: null, status: "in-progress", label: "Losers Final", team1Placeholder: "Winner of LB1", team2Placeholder: "Winner of LB2", team3Placeholder: "Winner of LB3" },
 
 ];
 
