@@ -135,7 +135,7 @@ const TEAMS = [
     players: [
       { name: "Parth", eliminated: false, kills: 0 },
       { name: "Dennis", eliminated: false, kills: 0 },
-      { name: "Surya", eliminated: false, kills: 1 },
+      { name: "Surya", eliminated: false, kills: 3, weekKills: 2 },
       { name: "Emerick", eliminated: false, kills: 0 },
     ],
   },
