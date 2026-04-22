@@ -9,8 +9,8 @@
 
 const TOURNAMENT = {
   name: "WECIB Water Wars",
-  currentWeek: 3,
-  status: "Losers Final",
+  currentWeek: 4,
+  status: "Semi-Finals",
   weekMatches: {
     1: [1, 2, 3, 4, 5, 6],
     2: [7, 8, 9, 13, 14, 15],
@@ -21,14 +21,14 @@ const TOURNAMENT = {
 };
 
 const ANNOUNCEMENTS = [
-  "Welcome to Water Wars! Round 3 matchups are live!",
+  "Welcome to Water Wars! Round 4 matchups are live!",
 ];
 
 const PURGE_DAY = {
-  active: false,
+  active: true,
   rules: [
     "Safety items are BANNED — no protection allowed.",
-    "Location sharing may be turned OFF from 2:30 PM – 5:30 PM.",
+    "Location sharing may be turned OFF from 2:00 PM – 6:00 PM.",
     "All other standard rules still apply.",
   ],
 };
@@ -135,7 +135,7 @@ const TEAMS = [
     players: [
       { name: "Parth", eliminated: false, kills: 0 },
       { name: "Dennis", eliminated: false, kills: 0 },
-      { name: "Surya", eliminated: false, kills: 3, weekKills: 2 },
+      { name: "Surya", eliminated: false, kills: 4, weekKills: 1 },
       { name: "Emerick", eliminated: false, kills: 0 },
     ],
   },
@@ -145,7 +145,7 @@ const TEAMS = [
     benched: "",
     players: [
       { name: "Nayan", eliminated: false, kills: 0 },
-      { name: "Gabe", eliminated: false, kills: 1 },
+      { name: "Gabe", eliminated: true, kills: 1 },
       { name: "Jack", eliminated: false, kills: 1 },
     ],
   },
@@ -194,7 +194,7 @@ const MATCHES = [
 
   // ===== WINNERS BRACKET — SEMIFINALS =====
   { id: 10, bracket: "winners", round: 3, team1: "la-leakers", team2: "baja-blasters", team1Score: null, team2Score: null, winner: null, status: "in-progress", label: "SF1", team1Placeholder: "Winner of M7", team2Placeholder: "Winner of M8" },
-  { id: 11, bracket: "winners", round: 3, team1: "squirtshank", team2: null, team1Score: null, team2Score: null, winner: null, status: "in-progress", label: "SF2", team1Placeholder: "Winner of M9", team2Placeholder: "Losers Bracket Winner" },
+  { id: 11, bracket: "winners", round: 3, team1: "squirtshank", team2: "squirtle-squad", team1Score: null, team2Score: null, winner: null, status: "in-progress", label: "SF2", team1Placeholder: "Winner of M9", team2Placeholder: "Losers Bracket Winner" },
 
   // ===== WINNERS BRACKET — FINALS =====
   { id: 12, bracket: "winners", round: 4, team1: null, team2: null, team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "Final", team1Placeholder: "Winner of SF1", team2Placeholder: "Winner of SF2" },
@@ -205,7 +205,7 @@ const MATCHES = [
   { id: 15, bracket: "losers", round: 1, team1: "squirtle-squad", team2: "drip-or-drown", team1Score: 4, team2Score: 2, winner: "squirtle-squad", status: "completed", label: "LB3", team1Placeholder: "Loser of M5", team2Placeholder: "Loser of M6" },
 
   // ===== LOSERS BRACKET — FINAL =====
-  { id: 16, bracket: "losers", round: 2, team1: "the-crackin", team2: "certified-soaker", team3: "squirtle-squad", team1Score: null, team2Score: null, team3Score: null, winner: null, status: "in-progress", label: "Losers Final", team1Placeholder: "Winner of LB1", team2Placeholder: "Winner of LB2", team3Placeholder: "Winner of LB3" },
+  { id: 16, bracket: "losers", round: 2, team1: "the-crackin", team2: "certified-soaker", team3: "squirtle-squad", team1Score: 1, team2Score: 3, team3Score: 5, winner: "squirtle-squad", status: "completed", label: "Losers Final", team1Placeholder: "Winner of LB1", team2Placeholder: "Winner of LB2", team3Placeholder: "Winner of LB3" },
 
 ];
 
