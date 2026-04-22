@@ -47,7 +47,7 @@ const TEAMS = [
     benched: "", // e.g. "Lucas, Abid"
     players: [
       { name: "Lucas", eliminated: false, kills: 3},
-      { name: "Karim", eliminated: false, kills: 0 },
+      { name: "Karim", eliminated: true, kills: 0 },
       { name: "Evan Y", eliminated: false, kills: 3 },
       { name: "Abid", eliminated: false, kills: 1 },
     ],
@@ -122,7 +122,7 @@ const TEAMS = [
     name: "Baja Blasters",
     benched: "",
     players: [
-      { name: "Gauhar", eliminated: false, kills: 2 },
+      { name: "Gauhar", eliminated: false, kills: 3, weekKills: 1 },
       { name: "Olivia", eliminated: false, kills: 0 },
       { name: "Evelyn", eliminated: false, kills: 0 },
       { name: "Mandi", eliminated: false, kills: 0 },
