@@ -158,8 +158,9 @@ ul { list-style: none; }
 }
 
 .scoreboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 24px;
 }
 
@@ -167,6 +168,10 @@ ul { list-style: none; }
   background: var(--white); border: 1px solid var(--gray-200);
   border-radius: var(--radius); overflow: hidden;
   transition: var(--transition);
+  width: 100%;
+  max-width: 520px;
+  flex: 0 1 520px;
+  box-sizing: border-box;
 }
 .scoreboard-card:hover { box-shadow: var(--shadow-lg); border-color: var(--sky); }
 
@@ -216,9 +221,11 @@ ul { list-style: none; }
 .scoreboard-score-row.three-way .sc-team-side:last-child { border-right: 0; }
 
 .scoreboard-card-three {
-  grid-column: 1 / -1;
+  flex: 0 1 100%;
   max-width: 960px;
+  width: 100%;
   margin-inline: auto;
+  box-sizing: border-box;
 }
 
 .sc-details { padding: 16px 20px; }
@@ -797,7 +804,7 @@ ul { list-style: none; }
   .bracket-round { min-width: 170px; padding: 0 10px; }
   .match-card { min-width: 150px; }
   .bracket-tabs { flex-direction: column; align-items: center; }
-  .scoreboard-grid { grid-template-columns: 1fr; }
+  .scoreboard-card { max-width: 100%; flex-basis: 100%; }
   .teams-grid { grid-template-columns: 1fr; }
   .standings-table { font-size: .8rem; }
   .standings-table th, .standings-table td { padding: 10px 8px; }
