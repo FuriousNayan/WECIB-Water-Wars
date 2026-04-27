@@ -21,7 +21,7 @@ const TOURNAMENT = {
 };
 
 const ANNOUNCEMENTS = [
-  "Welcome to Water Wars! Round 4 matchups are live!",
+  "Welcome to Water Wars! The Finals are now live!",
 ];
 
 const PURGE_DAY = {
