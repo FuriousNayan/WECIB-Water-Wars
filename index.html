@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
   <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -65,7 +65,14 @@
     </div>
     <div class="wave">
       <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
-        <path d="M0,64 C360,150 1080,0 1440,96 L1440,180 L0,180 Z" fill="#f0f9ff"/>
+        <defs>
+          <linearGradient id="bloodDrip" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#dc2626" stop-opacity=".0"/>
+            <stop offset="40%" stop-color="#7f1d1d" stop-opacity=".95"/>
+            <stop offset="100%" stop-color="#0c0407" stop-opacity="1"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,90 L60,72 L120,108 L180,82 L240,118 L300,88 L360,124 L420,92 L480,130 L540,96 L600,128 L660,90 L720,124 L780,86 L840,118 L900,84 L960,122 L1020,90 L1080,126 L1140,94 L1200,118 L1260,86 L1320,122 L1380,92 L1440,108 L1440,180 L0,180 Z" fill="url(#bloodDrip)"/>
       </svg>
     </div>
   </section>

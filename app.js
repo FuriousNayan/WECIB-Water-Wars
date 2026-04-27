@@ -399,7 +399,7 @@
       var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
       path.setAttribute("d", d);
       path.setAttribute("fill", "none");
-      path.setAttribute("stroke", "rgba(0, 119, 182, 0.35)");
+      path.setAttribute("stroke", "rgba(220, 38, 38, 0.45)");
       path.setAttribute("stroke-width", "2");
       svg.appendChild(path);
     });
