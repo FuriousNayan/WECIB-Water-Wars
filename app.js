@@ -607,10 +607,34 @@
       siren.currentTime = 0;
       overlay.classList.add("hiding");
       document.body.style.overflow = "";
+      startBackgroundMusic();
       setTimeout(function () {
         overlay.remove();
       }, 500);
     });
+  }
+
+  // ---------- Background Music ----------
+  var bgMusic = null;
+  function startBackgroundMusic() {
+    if (bgMusic) return;
+    bgMusic = new Audio("sounds/bgMusic.mp3");
+    bgMusic.loop = true;
+    bgMusic.volume = 0.5;
+    var playPromise = bgMusic.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(function () {
+        var resume = function () {
+          bgMusic.play();
+          document.removeEventListener("click", resume);
+          document.removeEventListener("keydown", resume);
+          document.removeEventListener("touchstart", resume);
+        };
+        document.addEventListener("click", resume);
+        document.addEventListener("keydown", resume);
+        document.addEventListener("touchstart", resume);
+      });
+    }
   }
 
   // ---------- Init ----------
