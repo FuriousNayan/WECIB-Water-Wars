@@ -28,7 +28,7 @@ const PURGE_DAY = {
   active: true,
   rules: [
     "Safety items are BANNED — no protection allowed.",
-    "Location sharing may be turned OFF from 3:00 PM – 8:00 PM.",
+    "Location sharing may be turned OFF from 2:00 PM – 6:00 PM.",
     "All other standard rules still apply.",
   ],
 };
@@ -46,7 +46,7 @@ const TEAMS = [
     name: "Los Angeles LEAKrs",
     benched: "", // e.g. "Lucas, Abid"
     players: [
-      { name: "Lucas", eliminated: false, kills: 4 },
+      { name: "Lucas", eliminated: false, kills: 5, weekKills: 1 },
       { name: "Karim", eliminated: false, kills: 0 },
       { name: "Evan Y", eliminated: false, kills: 3 },
       { name: "Abid", eliminated: false, kills: 1 },
@@ -134,7 +134,7 @@ const TEAMS = [
     benched: "",
     players: [
       { name: "Parth", eliminated: false, kills: 0 },
-      { name: "Dennis", eliminated: false, kills: 0 },
+      { name: "Dennis", eliminated: true, kills: 0 },
       { name: "Surya", eliminated: false, kills: 5 },
       { name: "Emerick", eliminated: false, kills: 0 },
     ],
@@ -258,8 +258,6 @@ const BRACKET_STRUCTURE = {
 //  { src: "https://some-url.com/clip.mp4", title: "Big play!", week: 1 },
 // ----------------------------------------------------------------
 const REELS = [
-   { src: "videos/evan elim jessica.MOV", title: "evan top 1 at wecib", week: 1 },
-   { src: "videos/gauhar elim marcus.MOV", title: "both hands on the steering wheel pls", week: 1 },
-   { src: "videos/evan elim andrew.MOV", title: "why unc in that pose tho", week: 1 },
-
+  //  { src: "videos/dennis.png", title: "why dennis so jolly", week: 5 },
+   { src: "videos/dennis and lucas.mp4", title: "why dennis so jolly", week: 5 },
 ];
