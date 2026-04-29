@@ -260,7 +260,7 @@ const BRACKET_STRUCTURE = {
 const REELS = [
   //  { src: "videos/dennis.png", title: "why dennis so jolly", week: 5 },
    { src: "videos/dennis and lucas.mp4", title: "why dennis so jolly", week: 5 },
-   { src: "videos/parth and karim non kill.mov", title: "cmon karim", week: 5 },
-   { src: "videos/parth jacket.mov", title: "we like ur jacket parth", week: 5 },
-   { src: "videos/parth mog.mov", title: "lookin good", week: 5 },
+   { src: "videos/parth and karim non kill.mp4", title: "cmon karim", week: 5 },
+   { src: "videos/parth jacket.mp4", title: "we like ur jacket parth", week: 5 },
+   { src: "videos/parth mog.mp4", title: "lookin good", week: 5 },
 ];
