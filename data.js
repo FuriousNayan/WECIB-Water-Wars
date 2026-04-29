@@ -28,7 +28,7 @@ const PURGE_DAY = {
   active: true,
   rules: [
     "Safety items are BANNED — no protection allowed.",
-    "Location sharing may be turned OFF from 2:00 PM – 6:00 PM.",
+    "Location sharing may be turned OFF from 5:00 PM – 8:00 PM.",
     "All other standard rules still apply.",
   ],
 };
@@ -260,4 +260,7 @@ const BRACKET_STRUCTURE = {
 const REELS = [
   //  { src: "videos/dennis.png", title: "why dennis so jolly", week: 5 },
    { src: "videos/dennis and lucas.mp4", title: "why dennis so jolly", week: 5 },
+   { src: "videos/parth and karim non kill.mov", title: "cmon karim", week: 5 },
+   { src: "videos/parth jacket.mov", title: "we like ur jacket parth", week: 5 },
+   { src: "videos/parth mog.mov", title: "lookin good", week: 5 },
 ];

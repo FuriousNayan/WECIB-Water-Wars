@@ -616,25 +616,79 @@
 
   // ---------- Background Music ----------
   var bgMusic = null;
-  function startBackgroundMusic() {
-    if (bgMusic) return;
-    bgMusic = new Audio("sounds/bgMusic.mp3");
-    bgMusic.loop = true;
-    bgMusic.volume = 0.5;
-    var playPromise = bgMusic.play();
+  var bgResumeAttached = false;
+  /** User preference: false means music should play when allowed by the browser. */
+  var musicUserMuted = false;
+  var syncMusicToggle = function () {};
+
+  function ensureBgMusic() {
+    if (!bgMusic) {
+      bgMusic = new Audio("sounds/bgMusic.mp3");
+      bgMusic.loop = true;
+      bgMusic.volume = 0.5;
+    }
+    return bgMusic;
+  }
+
+  function attachBgResumeListeners() {
+    if (bgResumeAttached) return;
+    bgResumeAttached = true;
+    var resume = function () {
+      document.removeEventListener("click", resume);
+      document.removeEventListener("keydown", resume);
+      document.removeEventListener("touchstart", resume);
+      bgResumeAttached = false;
+      if (!bgMusic || musicUserMuted) return;
+      bgMusic.play();
+    };
+    document.addEventListener("click", resume);
+    document.addEventListener("keydown", resume);
+    document.addEventListener("touchstart", resume);
+  }
+
+  function tryPlayBgMusic() {
+    if (musicUserMuted) return;
+    var audio = ensureBgMusic();
+    var playPromise = audio.play();
     if (playPromise && typeof playPromise.catch === "function") {
       playPromise.catch(function () {
-        var resume = function () {
-          bgMusic.play();
-          document.removeEventListener("click", resume);
-          document.removeEventListener("keydown", resume);
-          document.removeEventListener("touchstart", resume);
-        };
-        document.addEventListener("click", resume);
-        document.addEventListener("keydown", resume);
-        document.addEventListener("touchstart", resume);
+        attachBgResumeListeners();
       });
     }
+  }
+
+  /** Starts or resumes background music (e.g. after purge overlay). Forces sound on. */
+  function startBackgroundMusic() {
+    musicUserMuted = false;
+    tryPlayBgMusic();
+    syncMusicToggle();
+  }
+
+  function initMusicToggle() {
+    var btn = document.getElementById("musicToggle");
+    if (!btn) return;
+
+    syncMusicToggle = function () {
+      var on = !musicUserMuted;
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.setAttribute("aria-label", on ? "Turn music off" : "Turn music on");
+      btn.classList.toggle("is-muted", !on);
+      var label = btn.querySelector(".music-toggle-label");
+      if (label) label.textContent = on ? "Music on" : "Music off";
+    };
+
+    btn.addEventListener("click", function () {
+      musicUserMuted = !musicUserMuted;
+      ensureBgMusic();
+      if (musicUserMuted) {
+        bgMusic.pause();
+      } else {
+        tryPlayBgMusic();
+      }
+      syncMusicToggle();
+    });
+
+    syncMusicToggle();
   }
 
   // ---------- Init ----------
@@ -648,7 +702,11 @@
     renderLeaderboard();
     renderReels();
     renderTeams();
+    initMusicToggle();
     initScrollAnimations();
+    if (typeof PURGE_DAY === "undefined" || !PURGE_DAY.active) {
+      startBackgroundMusic();
+    }
   }
 
   if (document.readyState === "loading") {
