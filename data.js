@@ -28,7 +28,8 @@ const PURGE_DAY = {
   active: true,
   rules: [
     "Safety items are BANNED — no protection allowed.",
-    "Location sharing may be turned OFF from 5:00 PM – 8:00 PM.",
+    // "Location sharing may be turned OFF from 5:00 PM – 8:00 PM.",
+    "No shooting allowed after school (2:10 PM) on April 30th.",
     "All other standard rules still apply.",
   ],
 };
@@ -47,9 +48,9 @@ const TEAMS = [
     benched: "", // e.g. "Lucas, Abid"
     players: [
       { name: "Lucas", eliminated: false, kills: 5, weekKills: 1 },
-      { name: "Karim", eliminated: false, kills: 0 },
+      { name: "Karim", eliminated: true, kills: 0 },
       { name: "Evan Y", eliminated: false, kills: 3 },
-      { name: "Abid", eliminated: false, kills: 1 },
+      { name: "Abid", eliminated: true, kills: 1 },
     ],
   },
   {
@@ -133,9 +134,9 @@ const TEAMS = [
     name: "SquirtleSquad",
     benched: "",
     players: [
-      { name: "Parth", eliminated: false, kills: 0 },
+      { name: "Parth", eliminated: false, kills: 1, weekKills: 1 },
       { name: "Dennis", eliminated: true, kills: 0 },
-      { name: "Surya", eliminated: false, kills: 5 },
+      { name: "Surya", eliminated: false, kills: 6, weekKills: 1 },
       { name: "Emerick", eliminated: false, kills: 0 },
     ],
   },
@@ -261,6 +262,6 @@ const REELS = [
   //  { src: "videos/dennis.png", title: "why dennis so jolly", week: 5 },
    { src: "videos/dennis and lucas.mp4", title: "why dennis so jolly", week: 5 },
    { src: "videos/parth and karim non kill.mp4", title: "cmon karim", week: 5 },
-   { src: "videos/parth jacket.mp4", title: "we like ur jacket parth", week: 5 },
-   { src: "videos/parth mog.mp4", title: "lookin good", week: 5 },
+   { src: "videos/abid surya.mp4", title: "how the tables have turned", week: 5 },
+   { src: "videos/lucas and karim.mp4", title: "sorry lucas", week: 5 },
 ];
