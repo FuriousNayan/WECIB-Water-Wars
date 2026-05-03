@@ -10,7 +10,9 @@
 const TOURNAMENT = {
   name: "WECIB Water Wars",
   currentWeek: 5,
-  status: "Finals",
+  status: "Completed",
+  /** Set after the finals; drives the champion banner copy. Display name comes from TEAMS. */
+  championTeamId: "squirtle-squad",
   weekMatches: {
     1: [1, 2, 3, 4, 5, 6],
     2: [7, 8, 9, 13, 14, 15],
@@ -21,11 +23,11 @@ const TOURNAMENT = {
 };
 
 const ANNOUNCEMENTS = [
-  "Welcome to Water Wars! The Finals are now live!",
+  "Squirtle Squad are the Water Wars champions of WECIB.",
 ];
 
 const PURGE_DAY = {
-  active: true,
+  active: false,
   rules: [
     "Safety items are BANNED — no protection allowed.",
     // "Location sharing may be turned OFF from 5:00 PM – 8:00 PM.",
@@ -49,7 +51,7 @@ const TEAMS = [
     players: [
       { name: "Lucas", eliminated: false, kills: 5, weekKills: 1 },
       { name: "Karim", eliminated: true, kills: 0 },
-      { name: "Evan Y", eliminated: false, kills: 3 },
+      { name: "Evan Y", eliminated: true, kills: 3 },
       { name: "Abid", eliminated: true, kills: 1 },
     ],
   },
@@ -131,10 +133,10 @@ const TEAMS = [
   },
   {
     id: "squirtle-squad",
-    name: "SquirtleSquad",
+    name: "Squirtle Squad",
     benched: "",
     players: [
-      { name: "Parth", eliminated: false, kills: 1, weekKills: 1 },
+      { name: "Parth", eliminated: false, kills: 2, weekKills: 2 },
       { name: "Dennis", eliminated: true, kills: 0 },
       { name: "Surya", eliminated: false, kills: 6, weekKills: 1 },
       { name: "Emerick", eliminated: false, kills: 0 },
@@ -198,7 +200,7 @@ const MATCHES = [
   { id: 11, bracket: "winners", round: 3, team1: "squirtshank", team2: "squirtle-squad", team1Score: 1, team2Score: 5, winner: "squirtle-squad", status: "completed", label: "SF2", team1Placeholder: "Winner of M9", team2Placeholder: "Losers Bracket Winner" },
 
   // ===== WINNERS BRACKET — FINALS =====
-  { id: 12, bracket: "winners", round: 4, team1: "la-leakers", team2: "squirtle-squad", team1Score: null, team2Score: null, winner: null, status: "upcoming", label: "Final", team1Placeholder: "Winner of SF1", team2Placeholder: "Winner of SF2" },
+  { id: 12, bracket: "winners", round: 4, team1: "la-leakers", team2: "squirtle-squad", team1Score: 2, team2Score: 6, winner: "squirtle-squad", status: "completed", label: "Final", team1Placeholder: "Winner of SF1", team2Placeholder: "Winner of SF2" },
 
   // ===== LOSERS BRACKET — ROUND 1 =====
   { id: 13, bracket: "losers", round: 1, team1: "the-crackin", team2: "aquabats", team1Score: 4, team2Score: 3, winner: "the-crackin", status: "completed", label: "LB1", team1Placeholder: "Loser of M1", team2Placeholder: "Loser of M2" },

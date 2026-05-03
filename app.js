@@ -6,6 +6,44 @@
 (function () {
   "use strict";
 
+  var championBannerResizeObs = null;
+  var championStripOnWinResize = null;
+
+  /** Keeps `.hero::after` (CHAMPS) below the fixed champion banner; updates when layout/wrap changes. */
+  function teardownChampionStripSizing() {
+    document.documentElement.style.removeProperty("--champion-strip-h");
+    if (championBannerResizeObs) {
+      championBannerResizeObs.disconnect();
+      championBannerResizeObs = null;
+    }
+    if (championStripOnWinResize) {
+      window.removeEventListener("resize", championStripOnWinResize);
+      championStripOnWinResize = null;
+    }
+  }
+
+  function setupChampionStripSizing(banner) {
+    teardownChampionStripSizing();
+    if (!banner) return;
+
+    function apply() {
+      var h = banner.getBoundingClientRect().height;
+      if (h < 4) return;
+      document.documentElement.style.setProperty("--champion-strip-h", Math.ceil(h) + "px");
+    }
+
+    apply();
+
+    championStripOnWinResize = apply;
+    if (typeof ResizeObserver !== "undefined") {
+      championBannerResizeObs = new ResizeObserver(championStripOnWinResize);
+      championBannerResizeObs.observe(banner);
+      championStripOnWinResize = null;
+    } else {
+      window.addEventListener("resize", championStripOnWinResize);
+    }
+  }
+
   function getTeam(id) {
     return TEAMS.find(function (t) { return t.id === id; });
   }
@@ -40,6 +78,47 @@
     toggle.addEventListener("click", function () { links.classList.toggle("open"); });
     links.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () { links.classList.remove("open"); });
+    });
+  }
+
+  // ---------- Champion banner ----------
+  function renderChampionBanner() {
+    var banner = document.getElementById("championBanner");
+    if (!banner) return;
+
+    var id = TOURNAMENT.championTeamId;
+    if (!id) {
+      banner.hidden = true;
+      banner.innerHTML = "";
+      document.documentElement.classList.remove("has-champion-banner");
+      document.body.classList.remove("has-champion-banner");
+      banner.removeAttribute("aria-label");
+      teardownChampionStripSizing();
+      return;
+    }
+
+    var name = teamName(id);
+    if (!name) name = String(id).replace(/-/g, " ");
+
+    banner.hidden = false;
+    document.documentElement.classList.add("has-champion-banner");
+    document.body.classList.add("has-champion-banner");
+
+    banner.innerHTML =
+      '<span class="champion-banner-icon" aria-hidden="true">&#9733;</span>' +
+      '<span class="champion-banner-copy">' +
+      '<strong class="champion-banner-name">' +
+      name +
+      "</strong>" +
+      ' <span class="champion-banner-line">are the Water Wars champions of WECIB.</span>' +
+      "</span>";
+
+    banner.setAttribute("aria-label", name + ", Water Wars champions of WECIB");
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        setupChampionStripSizing(banner);
+      });
     });
   }
 
@@ -695,6 +774,7 @@
   function init() {
     initPurgeOverlay();
     initNavbar();
+    renderChampionBanner();
     renderHero();
     renderScoreboard();
     renderBracket();

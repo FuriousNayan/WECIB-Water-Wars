@@ -52,6 +52,7 @@
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+html.has-champion-banner { scroll-padding-top: 124px; }
 body {
   font-family: var(--font);
   background: var(--void);
@@ -147,6 +148,103 @@ ul { list-style: none; }
   transition: var(--transition);
 }
 
+/* --- Champion banner (season complete) --- */
+.champion-banner {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 12px 24px;
+  text-align: center;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.45);
+  background:
+    linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.12), transparent),
+    linear-gradient(180deg, rgba(40, 20, 4, 0.98), rgba(12, 6, 2, 0.98));
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(251, 191, 36, 0.12);
+}
+
+.champion-banner[hidden] {
+  display: none !important;
+}
+
+.champion-banner-icon {
+  color: var(--gold-bright);
+  font-size: 1rem;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.85);
+  animation: champStar 2.2s ease-in-out infinite;
+}
+
+@keyframes champStar {
+  0%, 100% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.champion-banner-copy {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 246, 230, 0.95);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  max-width: 920px;
+  line-height: 1.45;
+}
+
+.champion-banner-name {
+  color: var(--gold-bright);
+  font-weight: 900;
+  text-shadow: 0 0 16px rgba(251, 191, 36, 0.5);
+}
+
+.champion-banner-line {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+body.has-champion-banner .hero {
+  /* Clear fixed nav + banner + CHAMPS badge + gap before headline (strip height from JS when available) */
+  padding-top: max(172px, calc(64px + var(--champion-strip-h, 56px) + 4rem));
+}
+
+body.has-champion-banner .hero::after {
+  content: "CHAMPS";
+  /* Below fixed navbar (64px) + champion banner; `--champion-strip-h` set in app.js */
+  top: calc(64px + var(--champion-strip-h, 56px) + 14px);
+  transform: translateX(-50%);
+  z-index: 2;
+  border-color: rgba(251, 191, 36, 0.45);
+  color: rgba(251, 191, 36, 0.9);
+  animation: champBadgePulse 2.4s ease-in-out infinite;
+  /* letter-spacing adds visual gap after the last letter; bias padding so the word sits visually centered */
+  padding: 6px 22px 6px calc(22px + 12px);
+  text-align: center;
+}
+
+@keyframes champBadgePulse {
+  0%, 100% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 rgba(251, 191, 36, 0);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 28px rgba(251, 191, 36, 0.35);
+  }
+}
+
 /* --- Hero --- */
 .hero {
   position: relative; min-height: 100vh;
@@ -177,7 +275,8 @@ ul { list-style: none; }
   font-weight: 800;
   letter-spacing: 12px;
   color: rgba(220,38,38,.85);
-  padding: 6px 22px;
+  padding: 6px 22px 6px calc(22px + 12px);
+  text-align: center;
   border: 1px solid rgba(220,38,38,.4);
   background: rgba(220,38,38,.06);
   text-shadow: 0 0 12px rgba(220,38,38,.6);
@@ -1122,6 +1221,14 @@ ul { list-style: none; }
   }
   .nav-links.open { display: flex; }
   .hero { min-height: auto; padding: 140px 24px 120px; }
+  .champion-banner {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+  .champion-banner-copy {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+  }
   .section { padding: 60px 0; }
   .section-title { font-size: 1.6rem; margin-bottom: 32px; letter-spacing: 3px; }
   .rules-card { padding: 24px; }
